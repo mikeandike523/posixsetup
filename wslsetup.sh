@@ -12,7 +12,7 @@ sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt update -y
 
 sudo apt install -y  python3.12 python3.12-venv
-sudo apt install -y python3 python3-pip python3-venv
+sudo apt install -y python3-pip python3-venv
 sudo python3.12 -m pip install virtualenv
 sudo python3 -m pip install virtualenv
 
