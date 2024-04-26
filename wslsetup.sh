@@ -13,8 +13,6 @@ sudo apt update -y
 
 sudo apt install -y  python3.12 python3.12-venv
 sudo apt install -y python3-pip python3-venv
-sudo python3.12 -m pip install virtualenv
-sudo python3 -m pip install virtualenv
 
 # Install software-properties-common for adding repositories
 sudo apt-get -y install software-properties-common
