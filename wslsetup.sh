@@ -12,7 +12,7 @@ sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt update -y
 
 sudo apt install -y  python3.12 python3.12-venv
-sudo apt install -y python3-pip python3-venv
+sudo apt install -y python3-pip python3-venv python3-virtualenv
 
 # Install software-properties-common for adding repositories
 sudo apt-get -y install software-properties-common
