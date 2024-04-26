@@ -11,8 +11,6 @@ sudo apt-get upgrade -y
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt update -y
 
-sudo apyt inst
-
 sudo apt install -y  python3.12 python3.12-pip python3.12-venv
 sudo apt install -y python3-pip python3-venv
 
