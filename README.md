@@ -8,6 +8,7 @@ If not installed before, install from microsoft store
     wsl --unregister ubuntu
 
 Step 2 -- Open start menu and type Ubuntu
+
 A ubuntu based terminal will open and you will be prompted to make an account
 
 Step 3 -- Download installer script, run, and remove
