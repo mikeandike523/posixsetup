@@ -12,7 +12,7 @@ A ubuntu based terminal will open and you will be prompted to make an account
 
 Step 3 -- Download installer script, run, and remove
 
-    curl https://raw.githubusercontent.com/mikeandike523/wslsetup/main/wslsetup.sh -o wslsetup.sh
+    curl -f https://raw.githubusercontent.com/mikeandike523/wslsetup/main/wslsetup.sh -o wslsetup.sh
     bash wslsetup.sh
     rm -f wslsetup.sh
 
