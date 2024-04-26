@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exit on error
-set -xe
+set -e
 
 # Update and upgrade the package list
 sudo apt-get update -y
@@ -88,9 +88,12 @@ sudo chmod +x ./configure
 rm -f "$HOME/.local/bin/eolinuxify"
 ln -s "$HOME/.local/share/eolinuxify/eolinuxify" "$HOME/.local/bin/eolinuxify"
 
+export PATH="$PATH:$HOME/.local/bin"
+
 # test installations
 gitsleuth --help
 tsleuth --help
 eolinuxify --help
+
 
 echo "All installations are complete"
