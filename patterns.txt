@@ -1,3 +1,0 @@
-password          <PASSWORD>
-y\/n                    y
-\[ENTER\]         <BLANK> 
