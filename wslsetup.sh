@@ -7,10 +7,9 @@ set -xe
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
-# Install Python 3.12 and python3.12-venv
+# Install python3 dependencies, python3.12 and python3.12 dependencies
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt update -y
-
 sudo apt install -y  python3.12 python3.12-venv
 sudo apt install -y python3-pip python3-venv python3-virtualenv
 
