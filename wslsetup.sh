@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exit on error
-set -e
+set -xe
 
 # Update and upgrade the package list
 sudo apt-get update -y
