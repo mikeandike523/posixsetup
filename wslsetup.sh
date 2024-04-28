@@ -1,36 +1,63 @@
 #!/bin/bash
 
-# Exit on error
 set -e
 
-# Update and upgrade the package list
+dn="$(dirname "$(realpath "$0")")"
+
+create_symlink() {
+    local target="$1"
+    local link_name="$2"
+
+    # Check if the symbolic link already exists
+    if [ -L "${link_name}" ]; then
+        # The symlink exists, check if it points to the correct target
+        if [ "$(readlink "${link_name}")" = "${target}" ]; then
+            echo "Symlink already exists and points to the correct target: ${link_name} -> ${target}"
+        else
+            # The existing symlink points to the wrong target, update it
+            echo "Updating symlink to point to the correct target: ${link_name} -> ${target}"
+            ln -sf "${target}" "${link_name}"
+        fi
+    elif [ -e "${link_name}" ]; then
+        # The link name exists but is not a symlink, output an error or handle as needed
+        echo "Error: ${link_name} exists but is not a symlink. Please handle manually."
+    else
+        # The symlink does not exist, create it
+        echo "Creating new symlink: ${link_name} -> ${target}"
+        ln -s "${target}" "${link_name}"
+    fi
+}
+
+safe_source() {
+    local file="$1"
+    if [[ -f "$file" ]]; then
+        echo "Sourcing ${file}..."
+        source "$file"
+    else
+        echo "Warning: ${file} not found. Skipping."
+    fi
+}
+
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
-# Install python3 dependencies, python3.12 and python3.12 dependencies
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt update -y
 sudo apt install -y  python3.12 python3.12-venv
 sudo apt install -y python3-pip python3-venv python3-virtualenv
 
-# Install software-properties-common for adding repositories
 sudo apt-get -y install software-properties-common
 
-# Install Node.js and npm
-# Using NodeSource's binary distributions
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 sudo npm install -g npm@latest
 
-# Verify the installation of Node.js and npm
 node --version
 npm --version
 
-# Install Yarn globally using npm
 sudo npm install --global yarn
 
-# Verify Yarn installation
 yarn --version
 
 # Install docker and docker-compose
@@ -48,18 +75,14 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker --version
 docker-compose --version
 
-# Setup the folders recommended for single-user software installation
-# We use single-user installation since we dont want to be forced to run it as sudo
 mkdir -p "$HOME/.local/share"
 mkdir -p "$HOME/.local/bin"
-
 
 cd "$HOME/.local/share"
 rm -rf gitsleuth
 rm -rf tsleuth
 rm -rf eolinuxify
 
-# Install custom tool "gitsleuth"
 cd "$HOME/.local/share"
 git clone https://github.com/mikeandike523/gitsleuth
 cd gitsleuth
@@ -68,32 +91,32 @@ source pyenv/bin/activate
 pip install -r requirements.txt
 deactivate
 rm -f "$HOME/.local/bin/gitsleuth"
-ln -s "$HOME/.local/share/gitsleuth/gitsleuth" "$HOME/.local/bin/gitsleuth"
+create_symlink "$HOME/.local/share/gitsleuth/gitsleuth" "$HOME/.local/bin/gitsleuth"
 
-# Install custom tool "tsleuth"
 cd "$HOME/.local/share"
 git clone https://github.com/mikeandike523/tsleuth
 cd tsleuth
 yarn install
 yarn run build-all
 rm -f "$HOME/.local/bin/tsleuth"
-ln -s "$HOME/.local/share/tsleuth/tsleuth" "$HOME/.local/bin/tsleuth"
+create_symlink "$HOME/.local/share/tsleuth/tsleuth" "$HOME/.local/bin/tsleuth"
 
-# Install custom tool "eolinuxify"
 cd "$HOME/.local/share"
 git clone https://github.com/mikeandike523/eolinuxify
 cd eolinuxify
 sudo chmod +x ./configure
 ./configure
 rm -f "$HOME/.local/bin/eolinuxify"
-ln -s "$HOME/.local/share/eolinuxify/eolinuxify" "$HOME/.local/bin/eolinuxify"
+create_symlink "$HOME/.local/share/eolinuxify/eolinuxify" "$HOME/.local/bin/eolinuxify"
+
+cd "$dn"
+
+python3 idem_profiles_add_path.py "$HOME/.local/bin"
 
 export PATH="$PATH:$HOME/.local/bin"
 
-# test installations
 gitsleuth --help
 tsleuth --help
 eolinuxify --help
-
 
 echo "All installations are complete"
