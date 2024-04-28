@@ -16,7 +16,7 @@ If you already have Ubuntu (wsl) installed:
 
 If not:
 
-    - Go to microsoft store and download Ubuntu
+Go to microsoft store and download Ubuntu
 
 ### Step 2
 
