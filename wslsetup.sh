@@ -151,7 +151,7 @@ python3 idem_profiles_add_path.py "$HOME/.local/bin"
 
 export PATH="$PATH:$HOME/.local/bin"
 
-gitsleuth --helpc
+gitsleuth --help
 tsleuth --help
 eolinuxify --help
 opkvs --help
