@@ -77,6 +77,9 @@ docker-compose --version
 && sudo apt update \
 && sudo apt install gh -y
 
+# Install software which allows software suich as github cli to opena browser window
+# for tasks such as authnetication
+sudo apt install -y wslu
 
 mkdir -p "$HOME/.local/share"
 mkdir -p "$HOME/.local/bin"
@@ -123,3 +126,9 @@ tsleuth --help
 eolinuxify --help
 
 echo "All installations are complete"
+
+set +e
+
+echo "Some additional useful commands:"
+echo ""
+echo "    \"gh auth login\" to sign into github via the github CLI"
