@@ -39,9 +39,9 @@ You may be prompted one or more times to enter your user password
 
 This is necessary as some installation operations require superuser privileges
 
-    cd ~ &&
-    git clone https://github.com/mikeandike523/wslsetup &&
-    bash wslsetup/wslsetup.sh &&
+    cd ~ && \
+    git clone https://github.com/mikeandike523/wslsetup && \
+    bash wslsetup/wslsetup.sh && \
     rm -rf wslsetup
 
 #### Step 4
