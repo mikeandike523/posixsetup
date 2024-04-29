@@ -42,7 +42,7 @@ This is necessary as some installation operations require superuser privileges
     cd ~ && \
     git clone https://github.com/mikeandike523/wslsetup && \
     bash wslsetup/wslsetup.sh && \
-    rm -rf wslsetup
+    rm -rf wslsetup || rm -rf wslsetup
 
 #### Step 4
 

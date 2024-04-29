@@ -88,18 +88,19 @@ fi
 
 # install 1password CLI
 
-sudo -s \
-curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
-gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" |
-tee /etc/apt/sources.list.d/1password.list
-mkdir -p /etc/debsig/policies/AC2D62742012EA22/
-curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | \
-tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
-mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
-curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
-gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
-apt update && apt install 1password-cli
+sudo rm -f /usr/share/keyrings/1password-archive-keyring.gpg
+sudo rm -f /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+sudo curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+sudo echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" |
+sudo tee /etc/apt/sources.list.d/1password.list
+sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+sudo curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | \
+sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+sudo curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+sudo sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+sudo apt update && sudo apt install 1password-cli
 
 mkdir -p "$HOME/.local/share"
 mkdir -p "$HOME/.local/bin"
@@ -159,6 +160,13 @@ echo "All installations are complete"
 
 set +e
 
+echo ""
 echo "Some additional useful commands:"
 echo ""
 echo "    \"gh auth login\" to sign into github via the github CLI"
+echo "     TODO: 1password signin, signout, and switch account commands                                                 "
+echo "    \"code .\" If you have vscode on your host machine"
+echo "               and have \"code\" on host machine path"
+echo "               then the vscode server will automatically be downloaded"
+echo "               and vscode will be opened in the present working directory"
+echo ""
