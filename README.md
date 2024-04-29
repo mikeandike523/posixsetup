@@ -29,7 +29,7 @@ A Ubuntu based terminal will open and you will be prompted to make an account
  - Use an all-lowercase alphanumeric username with no spaces or special characters
    - For instance, you can use a lowercase and no-space version of your windows user account name
  - Use a simple but memorable password, separate from your windows password, or use a randomly generated password, and record it in a password manager
-     - To access your wsl machine, a hacker would have already had to b een able to comporimise your main ("host") machine. DUe to that added layer, it may not be necessary to use an auto-generated password
+     - To access your wsl machine, a hacker would have already had to b een able to compromise your main ("host") machine. Due to that added layer, it may not be necessary to use an auto-generated password
  
 #### Step 3
 
