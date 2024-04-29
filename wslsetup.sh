@@ -77,9 +77,14 @@ docker-compose --version
 && sudo apt update \
 && sudo apt install gh -y
 
-# Install software which allows software suich as github cli to opena browser window
+# Install software which allows software suich as github cli to open a browser window
 # for tasks such as authnetication
-sudo apt install -y wslu
+if [ -n "$WSL_DISTRO_NAME" ]; then
+    echo "WSL detected, proceeding with installation of wslu."
+    sudo apt install -y wslu
+else
+    echo "Not running under WSL, skipping installation of wslu."
+fi
 
 # install 1password CLI
 
@@ -145,7 +150,7 @@ python3 idem_profiles_add_path.py "$HOME/.local/bin"
 
 export PATH="$PATH:$HOME/.local/bin"
 
-gitsleuth --help
+gitsleuth --helpc
 tsleuth --help
 eolinuxify --help
 opkvs --help

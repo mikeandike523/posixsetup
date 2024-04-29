@@ -33,18 +33,16 @@ A Ubuntu based terminal will open and you will be prompted to make an account
 
 #### Step 3
 
-Run the following commands line by line
-
-Line 4 is the main installer script and takes the most time
+Run the following command
 
 You may be prompted one or more times to enter your user password
 
 This is necessary as some installation operations require superuser privileges
 
-    cd ~
-    git clone https://github.com/mikeandike523/wslsetup
-    bash wslsetup/wslsetup.sh
-    rm -rf wslsetup
+    cd ~ && \\
+    git clone https://github.com/mikeandike523/wslsetup && \\
+    bash wslsetup/wslsetup.sh && \\
+    rm -rf wslsetup \\
 
 #### Step 4
 
