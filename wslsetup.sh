@@ -81,6 +81,21 @@ docker-compose --version
 # for tasks such as authnetication
 sudo apt install -y wslu
 
+# install 1password CLI
+
+sudo -s \
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" |
+tee /etc/apt/sources.list.d/1password.list
+mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | \
+tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+apt update && apt install 1password-cli
+
 mkdir -p "$HOME/.local/share"
 mkdir -p "$HOME/.local/bin"
 
@@ -88,6 +103,7 @@ cd "$HOME/.local/share"
 rm -rf gitsleuth
 rm -rf tsleuth
 rm -rf eolinuxify
+rm -rf opkvs
 
 cd "$HOME/.local/share"
 git clone https://github.com/mikeandike523/gitsleuth
@@ -115,6 +131,14 @@ sudo chmod +x ./configure
 rm -f "$HOME/.local/bin/eolinuxify"
 create_symlink "$HOME/.local/share/eolinuxify/eolinuxify" "$HOME/.local/bin/eolinuxify"
 
+cd "$HOME/.local/share"
+git clone https://github.com/mikeandike523/opkvs
+cd opkvs
+sudo chmod +x ./configure
+./configure
+rm -f "$HOME/.local/bin/eoliopkvsnuxify"
+create_symlink "$HOME/.local/share/opkvs/opkvs" "$HOME/.local/bin/opkvs"
+
 cd "$dn"
 
 python3 idem_profiles_add_path.py "$HOME/.local/bin"
@@ -124,6 +148,7 @@ export PATH="$PATH:$HOME/.local/bin"
 gitsleuth --help
 tsleuth --help
 eolinuxify --help
+opkvs --help
 
 echo "All installations are complete"
 
