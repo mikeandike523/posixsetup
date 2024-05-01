@@ -3,7 +3,7 @@ sudo apt upgrade -y
 
 cd ~/.local/share
 
-rm -rf gitsleuth
+cd gitsleuth
 git stash
 git pull --force
 cd ..
