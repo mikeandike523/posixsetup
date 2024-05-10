@@ -6,24 +6,29 @@ cd ~/.local/share
 cd gitsleuth
 git stash
 git pull --force
+./update
 cd ..
 
 cd tsleuth 
 git stash
 git pull --force
+./update
 cd ..
 
 cd opkvs
 git stash
 git pull --force
+./update
 cd ..
 
 cd eolinuxify
 git stash
 git pull --force
+./update
 cd ..
 
 cd confy
 git stash
 git pull --force
+./update
 cd ..
