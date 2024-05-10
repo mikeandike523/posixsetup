@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -e
+
 sudo apt update -y
 sudo apt upgrade -y
 
@@ -32,3 +36,5 @@ git stash
 git pull --force
 ./update
 cd ..
+
+set +e
