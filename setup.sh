@@ -30,18 +30,17 @@ create_symlink() {
 
 
 
-sudo apt-get update -y
-sudo apt-get upgrade -y
-
-sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt update -y
-sudo apt install -y  python3.12 python3.12-venv
+sudo apt upgrade -y
+
+sudo apt update -y
+
 sudo apt install -y python3-pip python3-venv python3-virtualenv
 
-sudo apt-get -y install software-properties-common
+sudo apt -y install software-properties-common
 
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt install -y nodejs
 
 sudo npm install -g npm@latest
 
@@ -102,10 +101,13 @@ sudo curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
 sudo sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
 sudo apt update && sudo apt install 1password-cli
 
+# Install custom tools
+
 mkdir -p "$HOME/.local/share"
 mkdir -p "$HOME/.local/bin"
 
 cd "$HOME/.local/share"
+rm -rf confy
 rm -rf gitsleuth
 rm -rf tsleuth
 rm -rf eolinuxify
@@ -114,18 +116,16 @@ rm -rf opkvs
 cd "$HOME/.local/share"
 git clone https://github.com/mikeandike523/gitsleuth
 cd gitsleuth
-python3.12 -m venv pyenv
-source pyenv/bin/activate
-pip install -r requirements.txt
-deactivate
+sudo chmod +x ./configure
+./configure
 rm -f "$HOME/.local/bin/gitsleuth"
 create_symlink "$HOME/.local/share/gitsleuth/gitsleuth" "$HOME/.local/bin/gitsleuth"
 
 cd "$HOME/.local/share"
 git clone https://github.com/mikeandike523/tsleuth
 cd tsleuth
-yarn install
-yarn run build-all
+sudo chmod +x ./configure
+./configure
 rm -f "$HOME/.local/bin/tsleuth"
 create_symlink "$HOME/.local/share/tsleuth/tsleuth" "$HOME/.local/bin/tsleuth"
 
@@ -151,6 +151,7 @@ python3 idem_profiles_add_path.py "$HOME/.local/bin"
 
 export PATH="$PATH:$HOME/.local/bin"
 
+confy --help
 gitsleuth --help
 tsleuth --help
 eolinuxify --help

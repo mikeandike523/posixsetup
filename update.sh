@@ -22,3 +22,8 @@ cd eolinuxify
 git stash
 git pull --force
 cd ..
+
+cd confy
+git stash
+git pull --force
+cd ..
