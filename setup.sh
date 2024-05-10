@@ -162,4 +162,4 @@ set +e
 
 echo "All installations are complete"
 
-echo "Run \"newgrp docker\" followed by \"source ~/.bashrc\" to get your current shell up-to-date"
+echo "The easiest way to ensure your shell is up-to-date is to simply close your terminal and open it again"
