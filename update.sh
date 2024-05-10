@@ -10,31 +10,36 @@ cd ~/.local/share
 cd gitsleuth
 git stash
 git pull --force
-./update
+sudo chmod +x ./configure
+./configure
 cd ..
 
 cd tsleuth 
 git stash
 git pull --force
-./update
+sudo chmod +x ./configure
+./configure
 cd ..
 
 cd opkvs
 git stash
 git pull --force
-./update
+sudo chmod +x ./configure
+./configure
 cd ..
 
 cd eolinuxify
 git stash
 git pull --force
-./update
+sudo chmod +x ./configure
+./configure
 cd ..
 
 cd confy
 git stash
 git pull --force
-./update
+sudo chmod +x ./configure
+./configure
 cd ..
 
 set +e
