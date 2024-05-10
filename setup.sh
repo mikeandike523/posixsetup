@@ -154,17 +154,12 @@ tsleuth --help
 eolinuxify --help
 opkvs --help
 
-echo "All installations are complete"
+echo "Adding user $USER to docker group..."
+
+sudo usermod -aG docker $USER
 
 set +e
 
-echo ""
-echo "Some additional useful commands:"
-echo ""
-echo "    \"gh auth login\" to sign into github via the github CLI"
-echo "     TODO: 1password signin, signout, and switch account commands                                                 "
-echo "    \"code .\" If you have vscode on your host machine"
-echo "               and have \"code\" on host machine path"
-echo "               then the vscode server will automatically be downloaded"
-echo "               and vscode will be opened in the present working directory"
-echo ""
+echo "All installations are complete"
+
+echo "Run \"newgrp docker\" followed by \"source ~/.bashrc\" to get your current shell up-to-date"
