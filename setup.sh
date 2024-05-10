@@ -113,37 +113,34 @@ rm -rf tsleuth
 rm -rf eolinuxify
 rm -rf opkvs
 
-cd "$HOME/.local/share"
-git clone https://github.com/mikeandike523/gitsleuth
-cd gitsleuth
-sudo chmod +x ./configure
-./configure
-rm -f "$HOME/.local/bin/gitsleuth"
-create_symlink "$HOME/.local/share/gitsleuth/gitsleuth" "$HOME/.local/bin/gitsleuth"
+# Define a function to clone and set up a project
+setup_project() {
+    local project_name="$1"
+    local base_dir="$HOME/.local/share"
+    local bin_dir="$HOME/.local/bin"
 
-cd "$HOME/.local/share"
-git clone https://github.com/mikeandike523/tsleuth
-cd tsleuth
-sudo chmod +x ./configure
-./configure
-rm -f "$HOME/.local/bin/tsleuth"
-create_symlink "$HOME/.local/share/tsleuth/tsleuth" "$HOME/.local/bin/tsleuth"
+    # Navigate to the base directory and clone the project
+    cd "$base_dir"
+    git clone "https://github.com/mikeandike523/$project_name"
 
-cd "$HOME/.local/share"
-git clone https://github.com/mikeandike523/eolinuxify
-cd eolinuxify
-sudo chmod +x ./configure
-./configure
-rm -f "$HOME/.local/bin/eolinuxify"
-create_symlink "$HOME/.local/share/eolinuxify/eolinuxify" "$HOME/.local/bin/eolinuxify"
+    # Navigate into the project directory
+    cd "$project_name"
 
-cd "$HOME/.local/share"
-git clone https://github.com/mikeandike523/opkvs
-cd opkvs
-sudo chmod +x ./configure
-./configure
-rm -f "$HOME/.local/bin/eoliopkvsnuxify"
-create_symlink "$HOME/.local/share/opkvs/opkvs" "$HOME/.local/bin/opkvs"
+    # Make the configure script executable and run it
+    sudo chmod +x ./configure
+    ./configure
+
+    # Remove any existing symlink in the bin directory and create a new one
+    rm -f "$bin_dir/$project_name"
+    create_symlink "$base_dir/$project_name/$project_name" "$bin_dir/$project_name"
+}
+
+# Call the function for each project
+setup_project "gitsleuth"
+setup_project "tsleuth"
+setup_project "eolinuxify"
+setup_project "opkvs"
+setup_project "confy"
 
 cd "$dn"
 
