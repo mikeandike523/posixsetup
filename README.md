@@ -39,9 +39,9 @@ You may be prompted one or more times to enter your user password
 
 This is necessary as some installation operations require superuser privileges
 
-    cd ~ && \
-    git clone https://github.com/mikeandike523/wslsetup && \
-    bash wslsetup/wslsetup.sh && \
+    cd ~ &&
+    git clone https://github.com/mikeandike523/wslsetup &&
+    bash wslsetup/setup.sh &&
     rm -rf wslsetup || rm -rf wslsetup
 
 #### Step 4
@@ -54,7 +54,7 @@ The `gitsleuth`, `tsleuth`, and `eolinuxify` commands will not be available unti
 
 ### Running the Updater
 
-    cd ~ && \
-    git clone https://github.com/mikeandike523/wslsetup && \
-    bash wslsetup/updater.sh && \
+    cd ~ &&
+    git clone https://github.com/mikeandike523/wslsetup &&
+    bash wslsetup/update.sh &&
     rm -rf wslsetup || rm -rf wslsetup
