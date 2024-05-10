@@ -50,8 +50,6 @@ Close the current window, and run Ubuntu from the windows start menu
 
 You can simply type "Ubuntu" in the windows search bar
 
-The `gitsleuth`, `tsleuth`, and `eolinuxify` commands will not be available until you close and reopen your terminal window, or reload your user terminal profile using commands such as `source ~/.bashrc`
-
 ### Running the Updater
 
     cd ~ &&
