@@ -21,7 +21,7 @@ function brew {
 }
 
 
-if [ "$platform" = "linux"] || [ "$platform" = "wsl" ]; then
+if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
 
     sudo apt-get update -y
     sudo apt-get upgrade -y
