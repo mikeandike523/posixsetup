@@ -22,7 +22,7 @@ if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
 fi
 
 
-if [-e "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+if [ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
