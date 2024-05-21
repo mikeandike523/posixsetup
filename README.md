@@ -10,9 +10,9 @@ A setup utility dedicated to installing several useful tools on a fresh Linux, W
 From inside Linux, WSL, or MacOS machine:
 
     cd ~ &&
-    git clone https://github.com/mikeandike523/wslsetup &&
-    bash wslsetup/setup.sh &&
-    rm -rf wslsetup || rm -rf wslsetup
+    git clone https://github.com/mikeandike523/posixsetup &&
+    bash posixsetup/setup.sh &&
+    rm -rf posixsetup|| rm -rf posixsetup
 
 You may be prompted to enter your password one or more times.
 
@@ -27,9 +27,9 @@ This project is still in active development.
 From inside Linux, WSL, or MacOS machine:
 
     cd ~ &&
-    git clone https://github.com/mikeandike523/wslsetup &&
-    bash wslsetup/update.sh &&
-    rm -rf wslsetup || rm -rf wslsetu
+    git clone https://github.com/mikeandike523/posixsetup &&
+    bash posixsetup/update.sh &&
+    rm -rf posixsetup || rm -rf posixsetup
 
 You may be prompted to enter your password one or more times.
 
