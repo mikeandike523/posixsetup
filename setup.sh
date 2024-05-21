@@ -46,7 +46,7 @@ brew install gcc
 brew install docker docker-compose
 brew install gh
 brew install node
-brew install npm
+# brew install npm
 
 function install_1password_cli_linux {
         
@@ -76,7 +76,7 @@ fi
 
 # Is idempotent, or will update to ltest version,
 # so its okay to not check
-sudo npm install --global yarn
+npm install --global yarn
 yarn --version
 
 # Install custom tools
