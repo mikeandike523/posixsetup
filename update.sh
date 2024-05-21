@@ -4,17 +4,21 @@ dn="$(dirname "$(realpath "$0")")"
 
 source "$dn/utils.sh"
 
-brewexc="/home/linuxbrew/.linuxbrew/bin/brew"
-
-function brew {
-    "$brewexc" "$@"
-}
-
 set -e
 
 platform="$(detect__platform)"
 
-if []
+
+if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
+    brewexc="/home/linuxbrew/.linuxbrew/bin/brew"
+else
+    brewexc="/opt/homebrew/bin/brew"
+fi
+
+
+function brew {
+    "$brewexc" "$@"
+}
 
 
 if [ "$platform" = "linux"] || [ "$platform" = "wsl"]; then
