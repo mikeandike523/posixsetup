@@ -10,7 +10,7 @@ platform="$(detect_platform)"
 
 echo "Found platform: "$platform""
 
-if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ] then
+if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
     echo "Installing packages to ensure python3 'venv' module works properly on Linux"
     sudo apt install -y python3-pip python3-venv python3-virtualenv
 fi
