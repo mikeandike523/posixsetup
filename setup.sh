@@ -6,7 +6,7 @@ dn="$(dirname "$(realpath "$0")")"
 
 source "$dn/utils.sh"
 
-platform="$(detect__platform)"
+platform="$(detect_platform)"
 
 if [ "$platform" = "linux"] || [ "$platform" = "wsl" ] ; then
 
