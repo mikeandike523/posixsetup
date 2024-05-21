@@ -32,11 +32,11 @@ if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
 fi
 
 if [ ! -f "~/.bashrc" ]; then
-    echo "" > "~/.bashrc"
+    touch "~/.bashrc"
 fi
 
 if [ ! -f "~/.zshrc" ]; then
-    echo "" > "~/.zshrc"
+    touch "~/.zshrc"
 fi
 
 # if [ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
