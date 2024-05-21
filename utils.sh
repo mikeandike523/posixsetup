@@ -42,7 +42,7 @@ run_if_any_unavailable() {
     for cmd in "${commands[@]}"; do
         if ! command -v "$cmd" >/dev/null 2>&1; then
             echo "Command '$cmd' is not available. Running command: $command"
-            eval "$command"
+            bash -c "$command"
             return 0
         fi
     done
