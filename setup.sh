@@ -11,9 +11,10 @@ platform="$(detect_platform)"
 echo "Found platform: "$platform""
 
 if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
+    set +e
     sudo apt update -y
     sudo apt upgrade -y
-    set +e
+    sudo apt-get install build-essential
     sudo apt install -y python3-pip python3-venv python3-virtualenv
     set -e
 fi
@@ -23,9 +24,12 @@ run_if_any_unavailable brew -- /bin/bash -c "$(curl -fsSL https://raw.githubuser
 brew update -y
 brew upgrade -y
 
+alias brew="/home/linuxbrew/.linuxbrew/bin/brew"
+
+run_if_any_unavailable git -- brew install git
+run_if_any_unavailable gcc -- brew install gcc
 run_if_any_unavailable docker "docker-compose" -- brew install docker docker-compose
 run_if_any_unavailable gh -- brew install gh
-run_if_any_unavailable git -- brew install git
 run_if_any_unavailable op -- brew install 1password-cli
 run_if_any_unavailable node npm -- brew install node
 
