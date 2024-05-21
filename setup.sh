@@ -6,7 +6,11 @@ dn="$(dirname "$(realpath "$0")")"
 
 source "$dn/utils.sh"
 
-alias brew="/home/linuxbrew/.linuxbrew/bin/brew"
+brewexc="/home/linuxbrew/.linuxbrew/bin/brew"
+
+function brew {
+    "$brewexc" "$@"
+}
 
 platform="$(detect_platform)"
 
