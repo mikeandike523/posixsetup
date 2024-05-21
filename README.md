@@ -1,12 +1,39 @@
-# wslsetup
+# posixsetup
 
-A setup utility dedicated to installing several useful tools on a fresh wsl Ubuntu machine
+A setup utility dedicated to installing several useful tools on a fresh Linux, WSL, or MacOS machine
 
 ## Usage
 
-Assume WSL2 enabled
 
-### Step 1
+### Run the installer
+
+From inside Linux, WSL, or MacOS machine:
+
+    cd ~ &&
+    git clone https://github.com/mikeandike523/wslsetup &&
+    bash wslsetup/setup.sh &&
+    rm -rf wslsetup || rm -rf wslsetup
+
+You may be prompted to enter your password one or more times.
+
+To see properly changes to the PATH vairable, exit the terminal and open a new one
+
+I could not get source ~/.bashrc to work reliably, but you can test it for yourself if you like.
+
+This project is still in active development.
+
+### Running the Updater
+
+From inside Linux, WSL, or MacOS machine:
+
+    cd ~ &&
+    git clone https://github.com/mikeandike523/wslsetup &&
+    bash wslsetup/update.sh &&
+    rm -rf wslsetup || rm -rf wslsetu
+
+You may be prompted to enter your password one or more times.
+
+### Addendum: How to install or reinstall WSL Ubuntu
 
 Install or Reinstall Ubuntu
 
@@ -18,41 +45,6 @@ If not:
 
 Go to microsoft store and download Ubuntu
 
-### Step 2
-
 open "Ubuntu" from the Windows start menu or search "Ubuntu" in the Windows search bar
 
 A Ubuntu based terminal will open and you will be prompted to make an account
-
-#### Recommendations
-
-- Use an all-lowercase alphanumeric username with no spaces or special characters
-  - For instance, you can use a lowercase and no-space version of your windows user account name
-- Use a simple but memorable password, separate from your windows password, or use a randomly generated password, and record it in a password manager
-  - To access your wsl machine, a hacker would have already had to b een able to compromise your main ("host") machine. Due to that added layer, it may not be necessary to use an auto-generated password
-
-#### Step 3
-
-Run the following command
-
-You may be prompted one or more times to enter your user password
-
-This is necessary as some installation operations require superuser privileges
-
-    cd ~ &&
-    git clone https://github.com/mikeandike523/wslsetup &&
-    bash wslsetup/setup.sh &&
-    rm -rf wslsetup || rm -rf wslsetup
-
-#### Step 4
-
-Close the current window, and run Ubuntu from the windows start menu
-
-You can simply type "Ubuntu" in the windows search bar
-
-### Running the Updater
-
-    cd ~ &&
-    git clone https://github.com/mikeandike523/wslsetup &&
-    bash wslsetup/update.sh &&
-    rm -rf wslsetup || rm -rf wslsetup
