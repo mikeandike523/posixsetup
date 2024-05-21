@@ -8,11 +8,11 @@ source "$dn/utils.sh"
 
 platform="$(detect_platform)"
 
-if [ "$platform" = "linux"] || [ "$platform" = "wsl" ] ; then
+if [ "$platform" = "linux"] || [ "$platform" = "wsl" ]; then
 
     echo "Detected some linux platform, either plain linux or WSL"
 
-elif ["$platform" = "darwin" ]; then
+elif [ "$platform" = "darwin" ]; then
 
     echo "Detected MacOS"
 
