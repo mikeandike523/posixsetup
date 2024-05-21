@@ -31,11 +31,27 @@ if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
     set -e
 fi
 
+if [ ! -f "~/.bashrc" ]; then
+    echo "" > "~/.bashrc"
+fi
+
+if [ ! -f "~/.zshrc" ]; then
+    echo "" > "~/.zshrc"
+fi
 
 # if [ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
     (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> "/home/$USER/.bashrc"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+else 
+    (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> "/home/$USER/.zshrc"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+fi
+
 # fi
 
 
