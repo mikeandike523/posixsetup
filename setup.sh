@@ -38,7 +38,7 @@ brew install git
 brew install gcc
 brew install docker docker-compose
 brew install gh
-brew install 1password-cli
+brew install --cask 1password-cli
 brew install node
 
 # Is idempotent, or will update to ltest version,
