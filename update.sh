@@ -6,7 +6,7 @@ source "$dn/utils.sh"
 
 set -e
 
-platform="$(detect__platform)"
+platform="$(detect_platform)"
 
 
 if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
