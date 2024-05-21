@@ -11,18 +11,17 @@ platform="$(detect_platform)"
 echo "Found platform: "$platform""
 
 if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
-    set +e
     sudo apt update -y
     sudo apt upgrade -y
-    echo "Installing packages to ensure python3 'venv' module works properly on Linux"
+    set +e
     sudo apt install -y python3-pip python3-venv python3-virtualenv
     set -e
 fi
 
 run_if_any_unavailable brew -- /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew update
-brew upgrade
+brew update -y
+brew upgrade -y
 
 run_if_any_unavailable docker "docker-compose" -- brew install docker docker-compose
 run_if_any_unavailable gh -- brew install gh
