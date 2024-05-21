@@ -133,9 +133,6 @@ gitsleuth --help
 tsleuth --help
 eolinuxify --help
 opkvs --help
-echo "Adding user $USER to docker group..."
-
-sudo usermod -aG docker $USER
 
 set +e
 
