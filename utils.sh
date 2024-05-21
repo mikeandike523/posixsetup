@@ -21,36 +21,6 @@ detect_platform() {
     esac
 }
 
-run_if_any_unavailable() {
-    local commands=()
-    local command
-    local dash_encountered=false
-
-    for arg in "$@"; do
-        if [[ "$arg" == "--" ]]; then
-            dash_encountered=true
-            continue
-        fi
-
-        if [[ "$dash_encountered" == false ]]; then
-            commands+=("$arg")
-        else
-            command+="$arg "
-        fi
-    done
-
-    for cmd in "${commands[@]}"; do
-        if ! command -v "$cmd" >/dev/null 2>&1; then
-            echo "Command '$cmd' is not available. Running command: $command"
-            bash -c "$command"
-            return 0
-        fi
-    done
-
-    echo "All required commands are available. Skipping command execution."
-    return 0
-}
-
 create_symlink() {
     local target="$1"
     local link_name="$2"

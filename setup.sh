@@ -6,6 +6,8 @@ dn="$(dirname "$(realpath "$0")")"
 
 source "$dn/utils.sh"
 
+alias brew="/home/linuxbrew/.linuxbrew/bin/brew"
+
 platform="$(detect_platform)"
 
 echo "Found platform: "$platform""
@@ -19,19 +21,21 @@ if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
     set -e
 fi
 
-run_if_any_unavailable brew -- /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+if [-e "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 brew update -y
 brew upgrade -y
 
-alias brew="/home/linuxbrew/.linuxbrew/bin/brew"
 
-run_if_any_unavailable git -- brew install git
-run_if_any_unavailable gcc -- brew install gcc
-run_if_any_unavailable docker "docker-compose" -- brew install docker docker-compose
-run_if_any_unavailable gh -- brew install gh
-run_if_any_unavailable op -- brew install 1password-cli
-run_if_any_unavailable node npm -- brew install node
+brew install git
+brew install gcc
+brew install docker docker-compose
+brew install gh
+brew install 1password-cli
+brew install node
 
 # Is idempotent, or will update to ltest version,
 # so its okay to not check
