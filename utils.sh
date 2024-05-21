@@ -1,53 +1,22 @@
 #!/bin/bash
 
-
-print_if_not_silent() {
-    local silenced="$1"
-    shift
-    if [ "$silenced" = false ]; then
-        echo "$@"
-    fi
-}
-
 detect_platform() {
-    local silent_mode=false
-
-    while [ $# -gt 0 ]; do
-        case "$1" in
-            -s|--silent)
-                silent_mode=true
-                shift
-                ;;
-            *)
-                break
-                ;;
-        esac
-    done
-
     case "$(uname -s)" in
         Darwin)
-            print_if_not_silent "$silent_mode" \
-                "Detected platform: macOS (darwin)"
             echo "darwin"
             return 0
             ;;
         Linux)
             if grep -q Microsoft /proc/version; then
-                print_if_not_silent "$silent_mode" \
-                    "Detected platform: Windows Subsystem for Linux (wsl)"
                 echo "wsl"
-                return 0
             else
-                print_if_not_silent "$silent_mode" \
-                    "Detected platform: Linux (linux)"
-                ehco "linux"
-                return 0
+                echo "linux"
             fi
             ;;
         *)
-            print_if_not_silent "$silent_mode" \
-                "Unsupported platform. This script only supports macOS, Linux, and Windows Subsystem for Linux (WSL)." >&2
-            return 1
+          
+            echo  "Unsupported platform. This script only supports macOS, Linux, and Windows Subsystem for Linux (WSL)." >&2
+            exit 1
             ;;
     esac
 }
@@ -79,7 +48,7 @@ run_if_any_unavailable() {
     done
 
     echo "All required commands are available. Skipping command execution."
-    return 1
+    return 0
 }
 
 create_symlink() {

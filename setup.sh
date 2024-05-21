@@ -8,19 +8,11 @@ source "$dn/utils.sh"
 
 platform="$(detect_platform)"
 
-if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
+echo "Found platform: "$platform""
 
-    echo "Detected some linux platform, either plain linux or WSL"
-
-elif [ "$platform" = "darwin" ]; then
-
-    echo "Detected MacOS"
-
-else
-
-    echo "Unsupported platform: $(uname -s) ($(uname))"
-    exit 1
-
+if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ] then
+    echo "Installing packages to ensure python3 'venv' module works properly on Linux"
+    sudo apt install -y python3-pip python3-venv python3-virtualenv
 fi
 
 run_if_any_unavailable brew -- /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
