@@ -2,7 +2,7 @@
 
 set -e
 
-dn="$(dirname "$(realpath "$BASH_SOURCE[0]")")"
+dn="$(dirname "$(realpath "$0")")"
 
 source "$dn/utils.sh"
 
