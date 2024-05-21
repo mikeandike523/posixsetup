@@ -6,15 +6,22 @@ dn="$(dirname "$(realpath "$0")")"
 
 source "$dn/utils.sh"
 
-brewexc="/home/linuxbrew/.linuxbrew/bin/brew"
 
-function brew {
-    "$brewexc" "$@"
-}
 
 platform="$(detect_platform)"
 
 echo "Found platform: "$platform""
+
+if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
+    brewexc="/home/linuxbrew/.linuxbrew/bin/brew"
+else
+    brewexc="/opt/homebrew/bin/brew"
+fi
+
+
+function brew {
+    "$brewexc" "$@"
+}
 
 if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
     set +e
@@ -54,8 +61,8 @@ else
     if [ ! -f "/Users/$USER/.zshrc" ]; then
         touch "/Users/$USER/.zshrc"
     fi
-    (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> "/home/$USER/.zshrc"
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> "/Users/$USER/.zshrc"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 
 fi
 
