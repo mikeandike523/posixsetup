@@ -31,12 +31,12 @@ if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
     set -e
 fi
 
-if [ ! -f "~/.bashrc" ]; then
-    touch "~/.bashrc"
+if [ ! -f "/home/$USER/.bashrc" ]; then
+    touch "/home/$USER/.bashrc"
 fi
 
-if [ ! -f "~/.zshrc" ]; then
-    touch "~/.zshrc"
+if [ ! -f "/home/$USER/.zshrc" ]; then
+    touch "/home/$USER/.zshrc"
 fi
 
 # if [ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
