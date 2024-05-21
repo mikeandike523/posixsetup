@@ -36,6 +36,9 @@ if [ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+(echo; echo 'eval "\$(${HOMEBREW_PREFIX}/bin/brew shellenv)"') >> ${shell_rcfile}
+eval "\$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
+
 brew update
 brew upgrade
 
