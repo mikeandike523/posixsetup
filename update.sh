@@ -4,7 +4,11 @@ dn="$(dirname "$(realpath "$0")")"
 
 source "$dn/utils.sh"
 
-alias brew="/home/linuxbrew/.linuxbrew/bin/brew"
+brewexc="/home/linuxbrew/.linuxbrew/bin/brew"
+
+function brew {
+    "$brewexc" "$@"
+}
 
 set -e
 
@@ -18,17 +22,10 @@ if [ "$platform" = "linux"] || [ "$platform" = "wsl"]; then
     sudo apt-get update -y
     sudo apt-get upgrade -y
 
-elif ["$platform" = "darwin"]; then
-
-    brew update -y
-    brew upgrade -y
-    
-else
-
-    echo "Unsupported platform: $(uname -s) ($(uname))"
-    exit 1
-
 fi
+
+brew update
+brew upgrade
 
 cd ~/.local/share
 
