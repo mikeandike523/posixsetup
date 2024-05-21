@@ -1,9 +1,32 @@
 #!/bin/bash
 
+dn="$(dirname "$(realpath "$0")")"
+
+source "$dn/utils.sh"
+
 set -e
 
-sudo apt update -y
-sudo apt upgrade -y
+platform="$(detect__platform)"
+
+if []
+
+
+if [ "$platform" = "linux"] || [ "$platform" = "wsl"]; then
+
+    sudo apt-get update
+    sudo apt-get upgrade
+
+elif ["$platform" = "darwin"]; then
+
+    brew update
+    brew upgrade
+    
+else
+
+    echo "Unsupported platform: $(uname -s) ($(uname))"
+    exit 1
+
+fi
 
 cd ~/.local/share
 
