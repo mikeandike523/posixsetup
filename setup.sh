@@ -31,22 +31,29 @@ if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
     set -e
 fi
 
-if [ ! -f "/home/$USER/.bashrc" ]; then
-    touch "/home/$USER/.bashrc"
-fi
-
-if [ ! -f "/home/$USER/.zshrc" ]; then
-    touch "/home/$USER/.zshrc"
-fi
 
 # if [ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
+    if [ ! -f "/home/$USER/.bashrc" ]; then
+        touch "/home/$USER/.bashrc"
+    fi
+
+    if [ ! -f "/home/$USER/.zshrc" ]; then
+        touch "/home/$USER/.zshrc"
+    fi
     (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> "/home/$USER/.bashrc"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-else 
+else
+    if [ ! -f "/Users/$USER/.bashrc" ]; then
+        touch "/Users/$USER/.bashrc"
+    fi
+
+    if [ ! -f "/Users/$USER/.zshrc" ]; then
+        touch "/Users/$USER/.zshrc"
+    fi
     (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> "/home/$USER/.zshrc"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
