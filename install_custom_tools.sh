@@ -44,6 +44,8 @@ setup_project "opkvs"
 
 cd /usr/local/src
 
+sudo rm -rf confy
+
 sudo git clone https://github.com/mikeandike523/confy
 
 cd confy
