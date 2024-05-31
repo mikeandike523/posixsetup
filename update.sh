@@ -61,11 +61,12 @@ sudo chmod +x ./configure
 ./configure
 cd ..
 
-cd confy
-git stash
-git pull --force
+cd /usr/local/src/confy
+sudo git stash
+sudo git pull --force
 sudo chmod +x ./configure
 ./configure
-cd ..
+
+cd "$dn"
 
 set +e

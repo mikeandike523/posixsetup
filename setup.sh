@@ -26,7 +26,7 @@ function brew {
 function install_wslu {
     # Works for ubuntu
     # todo - make it more flexible as it may  crash on other linux distros
-    sudo add-apt-repository ppa:wslutilities/wslu
+    sudo add-apt-repository -y ppa:wslutilities/wslu
     sudo apt update -y
     sudo apt install wslu -y
 }
