@@ -31,42 +31,8 @@ fi
 brew update
 brew upgrade
 
-cd ~/.local/share
-
-cd gitsleuth
-git stash
-git pull --force
-sudo chmod +x ./configure
-./configure
-cd ..
-
-cd tsleuth 
-git stash
-git pull --force
-sudo chmod +x ./configure
-./configure
-cd ..
-
-cd opkvs
-git stash
-git pull --force
-sudo chmod +x ./configure
-./configure
-cd ..
-
-cd eolinuxify
-git stash
-git pull --force
-sudo chmod +x ./configure
-./configure
-cd ..
-
-cd /usr/local/src/confy
-sudo git stash
-sudo git pull --force
-sudo chmod +x ./configure
-./configure
-
 cd "$dn"
+
+bash install_custom_tools.sh
 
 set +e
