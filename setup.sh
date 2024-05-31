@@ -24,6 +24,7 @@ function brew {
 }
 
 function install_wslu {
+    sudo apt update -y
     sudo apt install -y gnupg2 apt-transport-https
     wget -O - https://pkg.wslutiliti.es/public.key | sudo gpg -o /usr/share/keyrings/wslu-archive-keyring.pgp --dearmor
 
