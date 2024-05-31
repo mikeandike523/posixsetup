@@ -2,6 +2,8 @@
 
 dn="$(dirname "$(realpath "$0")")"
 
+source "$dn/utils.sh"
+
 mkdir -p "$HOME/.local/share"
 mkdir -p "$HOME/.local/bin"
 
