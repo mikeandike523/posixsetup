@@ -24,13 +24,9 @@ function brew {
 }
 
 function install_wslu {
-    sudo apt update -y
-    sudo apt install -y gnupg2 apt-transport-https
-    wget -O - https://pkg.wslutiliti.es/public.key | sudo gpg -o /usr/share/keyrings/wslu-archive-keyring.pgp --dearmor
-
-    echo "deb [signed-by=/usr/share/keyrings/wslu-archive-keyring.pgp] https://pkg.wslutiliti.es/debian \
-    $(. /etc/os-release && echo "$VERSION_CODENAME") main" | sudo tee /etc/apt/sources.list.d/wslu.list
-
+    # Works for ubuntu
+    # todo - make it more flexible as it may  crash on other linux distros
+    sudo add-apt-repository ppa:wslutilities/wslu
     sudo apt update -y
     sudo apt install wslu -y
 }
@@ -45,7 +41,7 @@ if [ "$platform" = "linux" ] || [ "$platform" = "wsl" ]; then
     fi
     sudo apt update -y
     sudo apt upgrade -y
-    sudo apt-get install build-essential
+    sudo apt-get install build-essential -y
     sudo apt install -y python3-pip python3-venv python3-virtualenv
     set -e
 fi
