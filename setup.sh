@@ -78,7 +78,6 @@ brew install gcc
 brew install docker docker-compose
 brew install gh
 brew install node
-# brew install npm
 
 function install_1password_cli_linux {
         
@@ -94,7 +93,7 @@ function install_1password_cli_linux {
     sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
     sudo curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
     sudo sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
-    sudo apt update && sudo apt install 1password-cli
+    sudo apt update -y && sudo apt install 1password-cli -y
 }
 
 
@@ -105,9 +104,6 @@ else
 fi
 
 
-
-# Is idempotent, or will update to ltest version,
-# so its okay to not check
 npm install --global yarn
 yarn --version
 
@@ -150,7 +146,16 @@ setup_project "gitsleuth"
 setup_project "tsleuth"
 setup_project "eolinuxify"
 setup_project "opkvs"
-setup_project "confy"
+
+cd /usr/local/src
+
+sudo git clone https://github.com/mikeandike523/confy
+
+cd confy
+
+sudo chmod +x ./configure
+
+sudo ./configure
 
 cd "$dn"
 
